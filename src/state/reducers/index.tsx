@@ -2,8 +2,8 @@ import { combineReducers } from 'redux';
 import { productReducer } from './productReducer';
 
 const reducers = combineReducers({
-  products: productReducer,
+  allProducts: productReducer,
 });
 
 export default reducers;
-//export type State = ReturnType<typeof reducers>;
+export type State = ReturnType<typeof reducers>;
