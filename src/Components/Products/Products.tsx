@@ -1,16 +1,36 @@
-import { Row } from 'react-bootstrap';
-import ProductCard from './ProductCard';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
+import { setProducts } from '../../state/action-creators/index';
+import Product from '../../Pages/Product/Product';
 
 const Products = () => {
+  const dispatch = useDispatch();
+  /*const products1 = useSelector((state: State) => state.allProducts);
+  console.log(products1);*/
+
+  const fetchProducts = async () => {
+    await axios
+      .get('https://fakestoreapi.com/products')
+      .then((response: any) => {
+        const products = response.data;
+        console.log(products);
+        dispatch(setProducts(products));
+      })
+      .catch((err) => console.log('Err', err));
+  };
+
+  useEffect(() => {
+    fetchProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
-      <section className="py-5">
-        <div className="container px-4 px-lg-5 mt-5">
-          <Row className=" gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <ProductCard image={''} subtitle="Fancy Product" children={'$20'} />
-          </Row>
-        </div>
-      </section>
+      <h1>All Products Here</h1>
+      <div>
+        <Product />
+      </div>
     </>
   );
 };
