@@ -1,0 +1,36 @@
+/* Carrousel image slider */
+.hero1 {
+  min-height: calc(100vh - 0px);
+  background: url('../../assets/slide1.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero2 {
+  min-height: calc(100vh - 0px);
+  background: url('../../assets/slide2.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero3 {
+  min-height: calc(100vh - 0px);
+  background: url('../../assets/slide3.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.carousel-indicators {
+  display: none;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  display: none;
+}

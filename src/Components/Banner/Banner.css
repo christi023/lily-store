@@ -1,0 +1,41 @@
+/* Banner */
+.banner {
+  display: inline-block;
+  position: absolute !important;
+  color: rgb(243, 241, 233);
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 3px;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.banner h1 {
+  font-size: 44px !important;
+}
+.banner div {
+  width: 10rem;
+  height: 5px;
+  background: #d68d2d;
+  margin: 1.7rem auto;
+}
+.banner p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+@media screen and (max-width: 576px) {
+  .banner {
+    padding: 2rem 3rem !important;
+  }
+  .banner h1 {
+    font-size: 32px !important;
+  }
+}
+@media screen and (min-width: 992px) {
+  .banner {
+    padding: 2rem 6rem;
+  }
+  .banner h1 {
+    font-size: 4rem;
+  }
+}
