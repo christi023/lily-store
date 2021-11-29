@@ -3,11 +3,11 @@ import { Action, ProductList } from '../actions/productActions';
 import { Dispatch } from 'redux';
 
 // action-creators are functions that dispatch actions
-export const setProducts = (product: ProductList[]) => {
+export const setProducts = (products: ProductList[]) => {
   return (dispatch: Dispatch<Action>) => {
     dispatch({
       type: ActionType.SET_PRODUCTS,
-      payload: product,
+      payload: products,
     });
   };
 };
