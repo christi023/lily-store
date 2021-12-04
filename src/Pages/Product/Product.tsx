@@ -10,8 +10,9 @@ const Product = () => {
   const products = useSelector((state: State) => state.allProducts.products);
 
   return (
-    <div className="container px-4 px-lg-5 mt-5" style={{ position: 'relative' }}>
-      <Row className="row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+    <div className="container-fluid pt-5 pb-3">
+      <h2 className="section-title position-relative text-uppercase mx-xl-5 mb-4">Products</h2>
+      <Row className="px-xl-5">
         {products &&
           products.map((product: ProductList) => (
             <ProductCard
