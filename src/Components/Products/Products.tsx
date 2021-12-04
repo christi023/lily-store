@@ -27,7 +27,6 @@ const Products = () => {
 
   return (
     <>
-      <h1>All Products Here</h1>
       <div>
         <Product />
       </div>
