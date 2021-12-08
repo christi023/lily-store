@@ -13,23 +13,16 @@ type ParamTypes = {
   productId: string;
 };
 
-// props
-type ProductDetailsProps = {
-  image: string; // from api
-
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-};
-const ProductDetails = ({ title, price, image, description, category }: ProductDetailsProps) => {
+const ProductDetails = () => {
   // access the selected product
   const product = useSelector((state: State) => state.product);
 
+  let { image, title, price, category, description }: any = product;
+
   const { productId } = useParams<ParamTypes>();
   const dispatch = useDispatch();
-  console.log(product);
+
+  console.log('hhhhhh', product);
 
   const fetchProductDetails = async () => {
     await axios
@@ -47,6 +40,65 @@ const ProductDetails = ({ title, price, image, description, category }: ProductD
   }, []);
 
   return (
+    <section style={{ backgroundColor: '#eee' }}>
+      <div className="card">
+        <div className="card__title">
+          <div className="icon">
+            <i className="fa fa-arrow-left"></i>
+          </div>
+          <h3>New products</h3>
+        </div>
+        <div className="card__body">
+          <div className="half">
+            <div className="featured_text">
+              <h1>{category}</h1>
+              <p className="sub">{title}</p>
+              <p className="price">{price}</p>
+            </div>
+            <div className="image">
+              <img src={image} alt="" />
+            </div>
+          </div>
+          <div className="half">
+            <div className="description">
+              <p>{description}</p>
+            </div>
+            <span className="stock">
+              <i className="fa fa-pen"></i> In stock
+            </span>
+            <div className="reviews">
+              <ul className="stars">
+                <li>
+                  <i className="fa fa-star"></i>
+                </li>
+                <li>
+                  <i className="fa fa-star"></i>
+                </li>
+                <li>
+                  <i className="fa fa-star"></i>
+                </li>
+                <li>
+                  <i className="fa fa-star"></i>
+                </li>
+                <li>
+                  <i className="fa fa-star-o"></i>
+                </li>
+              </ul>
+              <span>(64 reviews)</span>
+            </div>
+          </div>
+        </div>
+        <div className="card__footer">
+          <div className="action">
+            <button type="button">Add to cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* 
     <div className="">
       <Row className="dd-flex justify-content-center">
         <Col md={8}>
@@ -82,8 +134,6 @@ const ProductDetails = ({ title, price, image, description, category }: ProductD
           </Card>
         </Col>
       </Row>
-    </div>
-  );
-};
+</div>*/
 
 export default ProductDetails;
