@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 // action
 import { selectedProducts } from '../../state/action-creators';
 import { State } from '../../state/reducers';
-import { Card, Col, Row } from 'react-bootstrap';
-//import { Link } from 'react-router-dom';
+import { Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './ProductDetails.css';
 
 type ParamTypes = {
@@ -40,61 +40,49 @@ const ProductDetails = () => {
   }, []);
 
   return (
-    <section style={{ backgroundColor: '#eee' }}>
-      <div className="card">
-        <div className="card__title">
-          <div className="icon">
-            <i className="fa fa-arrow-left"></i>
-          </div>
-          <h3>New products</h3>
-        </div>
-        <div className="card__body">
-          <div className="half">
-            <div className="featured_text">
-              <h1>{category}</h1>
-              <p className="sub">{title}</p>
-              <p className="price">{price}</p>
+    <div className="container">
+      <Col lg={8} className="border p-3 main-section md-white">
+        <Row className="m-0">
+          <Col lg={4} className="left-side-product-box pb-3">
+            <img className="fluid" src={image} alt="" />
+          </Col>
+          <Col md={6} lg={8}>
+            <div className="right-side-pro-detail border p-3 m-0">
+              <Row>
+                <Col lg={12}>
+                  <p className="m-0 p-0 mt-4">{title}</p>
+                </Col>
+                <Col lg={12}>
+                  <p className="m-0 p-0 price-pro">{price}</p>
+                </Col>
+                <Col lg={12} className=" pt-2">
+                  <h3>Product Detail</h3>
+                  <span>{description}</span>
+                </Col>
+                <Col lg={12}>
+                  <p className="tag-section">
+                    <strong>Tag : </strong>
+                    <Link to="/">{category}</Link>
+                  </p>
+                </Col>
+                <Col lg={12} className="mt-3">
+                  <Row>
+                    <Col lg={6} className="pb-4">
+                      <Link to="/cart" className="btn btn-1 ">
+                        <i className="fas fa-shopping-cart"> Add To Cart</i>
+                      </Link>
+                      <Link to="/" className="btn btn-1 ">
+                        <i className="fas fa-arrow-left"> Back</i>
+                      </Link>
+                    </Col>
+                  </Row>
+                </Col>
+              </Row>
             </div>
-            <div className="image">
-              <img src={image} alt="" />
-            </div>
-          </div>
-          <div className="half">
-            <div className="description">
-              <p>{description}</p>
-            </div>
-            <span className="stock">
-              <i className="fa fa-pen"></i> In stock
-            </span>
-            <div className="reviews">
-              <ul className="stars">
-                <li>
-                  <i className="fa fa-star"></i>
-                </li>
-                <li>
-                  <i className="fa fa-star"></i>
-                </li>
-                <li>
-                  <i className="fa fa-star"></i>
-                </li>
-                <li>
-                  <i className="fa fa-star"></i>
-                </li>
-                <li>
-                  <i className="fa fa-star-o"></i>
-                </li>
-              </ul>
-              <span>(64 reviews)</span>
-            </div>
-          </div>
-        </div>
-        <div className="card__footer">
-          <div className="action">
-            <button type="button">Add to cart</button>
-          </div>
-        </div>
-      </div>
-    </section>
+          </Col>
+        </Row>
+      </Col>
+    </div>
   );
 };
 
