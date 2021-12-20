@@ -8,6 +8,7 @@ import { State } from "../../state/reducers";
 import { Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./ProductDetails.css";
+import Ratings from "../../Components/Ratings/Ratings";
 
 type ParamTypes = {
   productId: string;
@@ -17,7 +18,8 @@ const ProductDetails = () => {
   // access the selected product
   const product = useSelector((state: State) => state.product);
 
-  let { image, title, price, category, description, rating }: any = product;
+  let { image, title, price, category, description }: any = product;
+  //console.log('rrrr', rating)
 
   const { productId } = useParams<ParamTypes>();
   const dispatch = useDispatch();
@@ -56,14 +58,11 @@ const ProductDetails = () => {
               <h3 className="product-title">{title}</h3>
               <div className="rating">
                 <div className="stars">
-
-                  <span className="fa fa-star checked"></span>
-                  <span className="fa fa-star checked"></span>
-                  <span className="fa fa-star checked"></span>
-                  <span className="fa fa-star"></span>
-                  <span className="fa fa-star"></span>
+             <Ratings />
+                
                 </div>
-                <span className="review-no">{rating.count} reviews</span>
+              
+                <span className="review-no">23 reviews</span>
               </div>
 
               <p className="product-description">{description} </p>
