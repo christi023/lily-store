@@ -3,12 +3,14 @@ import axios from "axios";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 // action
-import { selectedProducts } from "../../state/action-creators";
+import { selectedProducts, removeSelectedProduct } from "../../state/action-creators";
 import { State } from "../../state/reducers";
 import { Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+// Component
+import Loader from "../../Components/Loader/Loader";
+// style
 import "./ProductDetails.css";
-import Ratings from "../../Components/Ratings/Ratings";
 
 type ParamTypes = {
   productId: string;
@@ -18,8 +20,8 @@ const ProductDetails = () => {
   // access the selected product
   const product = useSelector((state: State) => state.product);
 
-  let { image, title, price, category, description }: any = product;
-  //console.log('rrrr', rating)
+  const { image, title, price, category, description }: any = product;
+  //let { rating } : any | Rating = product; // to get rating count which is the reviews
 
   const { productId } = useParams<ParamTypes>();
   const dispatch = useDispatch();
@@ -38,11 +40,18 @@ const ProductDetails = () => {
 
   useEffect(() => {
     if (productId && productId !== "") fetchProductDetails();
+    // cleanup function
+    return () => {
+      dispatch(removeSelectedProduct())
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div className="container">
+      {Object.keys(product).length === 0 ? (
+        <Loader />
+      ) : (
       <Card>
         <div className="container-fluid">
           <Row className="wrapper">
@@ -58,11 +67,10 @@ const ProductDetails = () => {
               <h3 className="product-title">{title}</h3>
               <div className="rating">
                 <div className="stars">
-             <Ratings />
-                
+                          
                 </div>
               
-                <span className="review-no">23 reviews</span>
+               <span className="review-no"> reviews</span>
               </div>
 
               <p className="product-description">{description} </p>
@@ -82,7 +90,7 @@ const ProductDetails = () => {
             </Col>
           </Row>
         </div>
-      </Card>
+      </Card> )}
     </div>
   );
 };
