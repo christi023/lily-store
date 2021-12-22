@@ -20,3 +20,11 @@ export const selectedProducts = (product: ProductList[]) => {
     });
   };
 };
+
+export const removeSelectedProduct = () => {
+  return (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.REMOVE_PRODUCT,      
+    });
+  };
+};
