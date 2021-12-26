@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
-import axios from "axios";
+import { useEffect } from "react";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 // action
-import { selectedProducts, removeSelectedProduct } from "../../state/action-creators";
+import { fetchProduct, removeSelectedProduct } from "../../state/action-creators";
 import { State } from "../../state/reducers";
 import { Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -13,7 +12,7 @@ import Loader from "../../Components/Loader/Loader";
 import "./ProductDetails.css";
 
 type ParamTypes = {
-  productId: string;
+  productId: string ;
 };
 
 const ProductDetails = () => {
@@ -26,20 +25,8 @@ const ProductDetails = () => {
   const { productId } = useParams<ParamTypes>();
   const dispatch = useDispatch();
 
-  console.log("hhhhhh", product);
-
-  const fetchProductDetails = async () => {
-    await axios
-      .get(`https://fakestoreapi.com/products/${productId}`)
-      .then((response: any) => {
-        const productDetails = response.data;
-        dispatch(selectedProducts(productDetails));
-      })
-      .catch((error) => console.log("Err", error));
-  };
-
   useEffect(() => {
-    if (productId && productId !== "") fetchProductDetails();
+    if (productId && productId !== "") dispatch(fetchProduct(productId));
     // cleanup function
     return () => {
       dispatch(removeSelectedProduct())
