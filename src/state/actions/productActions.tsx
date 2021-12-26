@@ -15,6 +15,11 @@ export interface productsState {
   products: ProductList[];
 }
 
+interface fetchProductsAction {
+  type: ActionType.FETCH_PRODUCTS;
+  payload: ProductList[]; // products
+}
+
 interface setProductsAction {
   type: ActionType.SET_PRODUCTS;
   payload: ProductList[]; // products
@@ -29,4 +34,4 @@ interface removeProductAction {
   type: ActionType.REMOVE_PRODUCT;
 }
 
-export type Action = setProductsAction | selectedProductsAction | removeProductAction;
+export type Action = fetchProductsAction | setProductsAction | selectedProductsAction | removeProductAction;
