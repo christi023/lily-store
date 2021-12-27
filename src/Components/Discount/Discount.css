@@ -1,0 +1,88 @@
+/* ==========================================================================
+   Countdown Style Start
+   ========================================================================== */
+
+.heading-count h6 {
+  padding: 16px 68px;
+  font-size: 30px;
+  color: #212121;
+  text-transform: uppercase;
+  line-height: 48px;
+}
+
+.time-count div {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.time-entry {
+  display: inline-block;
+  min-width: 100px;
+  margin: 15px;
+  height: 110px;
+  padding: 20px;
+  box-shadow: 1px 10px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  background: rgb(233, 218, 218);
+  text-align: center;
+  font-weight: 400;
+  color: #212121;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 22px;
+}
+.time-entry span {
+  font-size: 25px;
+  line-height: 45px;
+  font-weight: 700;
+  display: block;
+  color: #212121;
+  margin-bottom: 10px;
+}
+
+.time-entry:first-child {
+  border-left: none;
+}
+
+.time-countdown {
+  margin-bottom: 10px;
+}
+
+.countdown-timer {
+  margin-top: 2em;
+  z-index: 9999;
+  background-image: url(../../assets/pexels.jpeg);
+}
+
+h6.wrapper {
+  text-align: center;
+  color: #fff;
+  font-size: 42px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: 'Josefin Sans', sans-serif;
+  background: linear-gradient(to right, #eb487f 10%, #25abe8 50%, #c79731 60%);
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 1.5s linear infinite;
+  display: inline-block;
+  margin-bottom: 0ch;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+@media (max-width: 767px) {
+  .countdown-timer .heading-count {
+    padding: 10px;
+  }
+}
