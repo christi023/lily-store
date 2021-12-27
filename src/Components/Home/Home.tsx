@@ -1,7 +1,7 @@
-import React from 'react';
 // Components
 import Banner from '../Banner/Banner';
 import Carrousel from '../Carrousel/Carrousel';
+import Discount from '../Discount/Discount';
 import Products from '../Products/Products';
 
 const Home = () => {
@@ -15,6 +15,7 @@ const Home = () => {
       <div>
         <Products />
       </div>
+      <Discount />
     </>
   );
 };
