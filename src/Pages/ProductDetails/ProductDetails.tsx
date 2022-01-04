@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import Loader from "../../Components/Loader/Loader";
 // style
 import "./ProductDetails.css";
+import Ratings from "../../Components/Ratings/Ratings";
 
 type ParamTypes = {
   productId: string ;
@@ -19,7 +20,7 @@ const ProductDetails = () => {
   // access the selected product
   const product = useSelector((state: State) => state.product);
 
-  const { image, title, price, category, description }: any = product;
+  const { image, title, price, category, description, rating}: any = product;
   //let { rating } : any | Rating = product; // to get rating count which is the reviews
 
   const { productId } = useParams<ParamTypes>();
@@ -54,10 +55,10 @@ const ProductDetails = () => {
               <h3 className="product-title">{title}</h3>
               <div className="rating">
                 <div className="stars">
-                          
+                 <Ratings />                       
                 </div>
               
-               <span className="review-no"> reviews</span>
+               <span className="review-no">{rating.count} reviews</span>
               </div>
 
               <p className="product-description">{description} </p>
