@@ -8,20 +8,12 @@ type RatingProps = {
   className?: string,
 }
 
-
-type Rating = {
-  rate: number,
-  count: number
-}
-
 const Ratings = ({color} : RatingProps) => {
  const product = useSelector((state: State) => state.product);
 console.log('ppp',product)
 
- let {rating}: any | Rating = product;
-  //value = rating.rate
-
-  console.log('eee',rating)
+const { rating}: any = product;
+console.log('rating', rating)
 
   return <div className="rating">
     <div className='stars'>
