@@ -56,7 +56,7 @@ console.log('rating', rating)
 };
 
 Ratings.defaultProps = {
-  color: '#f8e825',
+  color: '#ff9f1a',
 };
 
 export default Ratings;
